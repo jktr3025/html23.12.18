@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style type="text/css">
+        *{
+            margin: 0;padding: 0;
+        }
+        .wrap {
+            width: 700px;
+            border: 2px solid black;
+            margin: 100px auto;
+        }
+        .img{
+            width: 100%;
+            padding-top: 700px;
+            text-align: center;
+        }
+        .img img{
+            opacity: 0;
+            transform: scale(0);
+            transition: all 0.3s;
+
+        }
+        .img img.ain{
+            opacity: 1;
+            transform: scale(1);
+        }
+        .img img:hover{
+            filter: sepia() blur(5px);
+        }
+
+        .box{
+            position: relative;
+            left: -800px;
+            opacity: 0;
+            transition: all 0.3s;
+        }
+        .box img{}
+        .box.in{
+            left: 0;
+            opacity: 1;
+        }
+        </style>
+
+    <script src="script/jquery-3.7.1.js"></script>
+    <script lang="java">
+        $(function(){
+            // setInterval(  function(){}  , 3000) // 3000마다 1회 반복 실행
+
+            // setTimeout(  function(){}  , 3000) //3000이후 1회 실행되고 끝
+        })//jquery
+
+        $(window).scroll(function(){
+            var top = $(this).scrollTop();
+            console.log("top",top)
+            
+            if(top > 80){
+                $(".img img").each(function(i){
+                    setTimeout(function(){$(".img img").eq(i).addClass("ain")}, i*300)
+                }) //img img").each
+            }else{
+                $(".img img").each(function(i){
+                    setTimeout(function(){$(".img img").eq(i).removeClass("ain")}, i*300)
+                })//img img").each
+            } //if
+
+            if(top > 150){
+                $(".box").addClass("in")
+            }else{
+                $(".box").removeClass("in")
+            }//if
+
+
+        }) //window).scroll
+    </script>
+
+</head>
+<body>
+    <div class="wrap">
+        <h1>스크롤하면 차례대로 실행되는 애니메이션 ↓</h1>
+        <div class="img">
+            <img src="img/icon01.png" alt="mario">
+            <img src="img/icon02.png" alt="luigi">
+            <img src="img/icon03.png" alt="toad">
+        </div><!-- img -->
+        <p>이미지에 마우스를 올려보세요 hover ↑</p>
+    </div><!-- wrap -->
+
+
+    <div class="box">
+        <img src="img/007.jpg" alt="007">
+    </div><!-- box -->
+
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="script/jquery-3.7.1.js"></script>
+    <script src="script/jquery-ui.js"></script>
+    <script lang="java">
+        $(function(){
+            $(".color_picker div").each(function(i){
+                console.log("index : " , i);
+                var col = $(this).text()
+                console.log("col : " , col)
+                $(this).css({"background" : col})
+            }) //color_picker li").each
+
+            $(".color_picker div").click(function(){
+                var bg = $(this).text()
+                $("body").stop().css({"background" : bg})
+                console.log("bg : " , bg)
+            })//color_picker div").click
+
+            $(".color div").each(function(ind){
+                console.log("ind : " ,ind )
+                var col2 = $(this).attr("data")
+                console.log("col2 :" , col2)
+                $(this).css({"background" : col2})
+            })//color div").each
+
+
+            $(".color div").click(function(){
+                var bg2 = $(this).attr("data")
+                console.log("bg2 : ", bg2)
+                $("body").stop().css({"background": bg2})
+            })
+        })//jquery
+    </script>
+
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background-color: tan;
+            margin: 20px;
+            padding: 20px;
+        }
+        .color_picker div{
+           width: 80px;
+           height: 30px;
+           text-align: center;
+           display: inline-block;
+           line-height: 30px;
+           margin: 20px;
+           cursor: pointer;
+        }
+        .color div{
+            width: 80px;
+           height: 30px;
+           text-align: center; 
+           display: inline-block;
+           line-height: 30px;
+           margin: 20px;
+           cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1>배경색 변경하기</h1>
+        <div class="color_picker">
+            <div>#123876</div>
+            <div>#426923</div>
+            <div>#123576</div>
+            <div>#732156</div>
+            <div>#135765</div>
+        </div><!-- color_picker -->
+
+        <div class="color">
+            <div data="red">빨강</div>
+            <div data="orange">주황</div> 
+            <div data="yellow">노랑</div>
+            <div data="green">초록</div>
+            <div data="blue">파랑</div>
+            <div data="navy">남색</div>
+            <div data="purple">보라</div>
+        </div><!-- color -->
+
+    </div><!-- box -->
+</body>
+</html>

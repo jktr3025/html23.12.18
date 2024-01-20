@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <script src="script/jquery-3.7.1.js"></script>
+    <script src="script/jquery-ui.js"></script>
+    <script lang="java">
+        $(function () {
+            $(".logo").fadeIn();
+
+            $(".logo").click(function () {
+
+                $(".wrap h1").text("Super Mario").css({"color":"cadetblue"})
+                $(".wrap img").each(function (i) {
+                    $(this).delay(i * 1000).toggleClass("drop", 1000, "easeOutElastic")
+                }) //img").each
+
+
+            }) //logo").click
+
+            $(".wrap img").click(function () {
+                var txt = $(this).attr("alt")
+                console.log("txt : ", txt)
+                $(".wrap h1").text(txt)
+                var col = $(this).attr("color")
+                console.log("color : ", col)
+                $(".wrap h1").css({
+                    "color": col
+                })
+            }) //wrap img").click
+
+
+
+        }) //jquery
+    </script>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            padding-top: 5%;
+            text-align: center;
+            font-family: "Lobster";
+        }
+
+        .wrap {
+            height: 380px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+
+        .wrap h1 {
+            font-size: 100px;
+            color: cadetblue;
+            height: 200px;
+        }
+
+        .wrap img {
+            position: relative;
+            top: -1500px;
+            opacity: 0;
+        }
+
+        .wrap img.drop {
+            top: 0;
+            opacity: 1;
+        }
+
+        .logo {
+            display: none;
+        }
+        img{
+            vertical-align: bottom;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="img/logo.png" alt="logo" class="logo">
+
+    <div class="wrap">
+        <h1>Super Mario</h1>
+        <img src="img/icon01.png" alt="Mario" color="red">
+        <img src="img/icon02.png" alt="Luigi" color="green">
+        <img src="img/icon03.png" alt="Toad" color="yellow">
+    </div><!-- wrap -->
+</body>
+
+</html>

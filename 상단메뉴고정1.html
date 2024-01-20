@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        ul, li{
+            list-style: none;
+        }
+        a{
+            text-decoration: none;
+            color: inherit;
+        }
+        body{
+            background-color: #555; 
+        }
+        .nav , .fix_nav{
+            text-align: center;
+            background-color: white;
+            width: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .nav li , .fix_nav li{
+        display: inline-block;
+
+        }
+        .nav li a, .fix_nav li a{
+            display: block;
+            height: 100px;
+            line-height: 100px;
+            padding: 0 20px;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+
+        }
+        .fix_nav{
+            position: fixed;
+            top: -100px;
+            background-color: pink;
+            transition: all 0.3s;
+        }
+
+        .fix_nav.on{
+            top: 0;
+        }
+
+
+        .box{}
+        .box ul{}
+        .box ul li{
+            font-size: 200px;
+            font-weight: bold;
+            text-align: center;
+            padding: 120px 0;
+            border-bottom: 3px solid darkmagenta;
+            color: #ddd;
+        }
+        .box ul li#cont1{
+            height: 1200px;
+            background-color: paleturquoise;
+        }
+        .box ul li#cont2{
+            height: 1000px;
+            background-color: lightpink;
+        }
+        .box ul li#cont3{
+            height: 1100px;
+            background-color: indianred;
+        }
+        .box ul li#cont4{
+            height: 1300px;
+            background-color: darkkhaki;
+        }
+        .box ul li#cont5{
+            height: 900px;
+            background-color: deepskyblue;
+        }
+    </style>
+    <script src="script/jquery-3.7.1.js"></script>
+    <script src="script/jquery-ui.js"></script>
+    <script lang="java">
+        $(function(){
+            $(".nav a , .fix_nav a").click(function(){
+               var go = $(this).attr("href")
+                console.log("go" ,go)
+                var t_go = $(go).offset().top;
+                console.log("t_go", t_go)
+
+                $("html , body").stop().animate({"scrollTop": t_go},500)
+            })//.nav a , fix_nav a").click
+        })//jquery
+        $(window).scroll(function(){
+            var top = $(this).scrollTop();
+            console.log("top:",top)
+
+            if(top>100){
+                $(".fix_nav").addClass("on")
+            }else{
+                $(".fix_nav").removeClass("on")
+            }
+        }) //window
+    </script>
+</head>
+<body>
+    <div class="wrap">
+        <nav class="nav">
+            <ul>
+            <li><a href="#cont1">menu1</a></li>
+            <li><a href="#cont2">menu2</a></li>
+            <li><a href="#cont3">menu3</a></li>
+            <li><a href="#cont4">menu4</a></li>
+            <li><a href="#cont5">menu5</a></li>
+        </ul>
+        </nav><!-- nav -->
+
+        <nav class="fix_nav">
+            <ul>
+            <li><a href="#cont1">menu1</a></li>
+            <li><a href="#cont2">menu2</a></li>
+            <li><a href="#cont3">menu3</a></li>
+            <li><a href="#cont4">menu4</a></li>
+            <li><a href="#cont5">menu5</a></li>
+        </ul>
+        </nav><!-- fix_nav -->
+
+        <div class="box">
+            <ul>
+                <li id="cont1">cont1</li>
+                <li id="cont2">cont2</li>
+                <li id="cont3">cont3</li>
+                <li id="cont4">cont4</li>
+                <li id="cont5">cont5</li>
+            </ul>
+        </div><!-- box -->
+    </div><!-- wrap -->
+</body>
+</html>

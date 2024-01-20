@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        *{margin: 0;padding: 0;}
+        body{
+            background: #ddd;
+            width: 300%;
+            height: 3000px;
+        }
+        .grandfather{
+            background: darkslateblue;
+            width: 800px;
+            position: absolute;
+            left: 100px;
+            top: 50px;
+        }
+        .father{
+            background: chocolate;
+            width: 300px;
+            height: 200px;
+            margin: 50px auto;
+        }
+        .children{
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+    <script src="script/jquery-3.7.1.js"></script>
+    <script lang="java">
+        $(function(){
+        var pos =  $(".grandfather").position();
+        console.log(pos)
+
+        var pos_x =  $(".grandfather").position().left;
+        console.log(pos_x)
+        var pos_y =  $(".grandfather").position().top;
+        console.log(pos_y)
+
+        var wid = $(".grandfather").width();
+        console.log(wid)
+        var hei = $(".grandfather").height();
+        console.log(hei)
+
+        var f_offset = $(".father").offset()
+        console.log(f_offset)     //body로부터의 위치를 찾아줌
+        
+        var f_offset_x = $(".father").offset().left;
+        console.log(f_offset_x) 
+        
+        var f_offset_y = $(".father").offset().top;
+        console.log(f_offset_y) 
+
+        })//jquery  
+
+        $(window).scroll(function(){
+        var s_top = $(this).scrollTop();
+        console.log(s_top);
+        
+        var s_left = $(this).scrollLeft();
+        console.log(s_left);
+
+
+
+
+
+
+
+        })
+
+
+    </script>
+</head>
+<body>
+    <div class="grandfather">
+        <div class="father">
+            <img src="img/normal_01.png" alt="normal_01" class="children">홍길동
+        </div><!-- father -->
+    </div><!-- grandfather -->
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title> 
+    <style type="text/css">
+        p{
+            width: 80%;
+            border: 1px solid tomato;
+            margin: 100px auto;
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+    <script src="script/jquery-3.7.1.js"></script>
+    <script src="script/jquery-ui.js"></script>
+    <script lang="java">
+        $(function(){
+           var w1 = $("p").width();
+           console.log("w", w1)
+           $("p").text(w1);       //이렇게 하면 크기 바뀔 때마다 그 사이즈를 텍스츠로
+                                  //바로바로 나타내주지 않고 새로 고침해야 바뀜
+           $(window).resize(function(){
+            w1 = $("p").width();
+            $("p").text(w1);  
+           })//resize        // 리사이즈 주고 w1 = $("p").width(); $("p").text(w1); 줘야지
+                            //크기가 바뀔 떄마다 그 사이즈를 텍스트로 표현
+        })//jquery
+    </script>
+</head>
+<body>
+    <p></p>
+</body>
+</html>

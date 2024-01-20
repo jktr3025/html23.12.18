@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        *{margin: 0;padding: 0;}
+        body{
+            width: 100%;
+            height: 1500px;
+        }
+        .list{
+            width: 100%;
+            position: relative;
+            border: 1px solid darkorchid;
+            height: 300px;
+        }
+        .list img{
+            position: absolute;
+            width: 150px;
+            opacity: 0;
+            transition: all 0.3s ease-in-out;
+        }
+        .list img.ani{
+            opacity: 1;
+        }
+        .list img:nth-child(1){
+            left: 200px;
+            top: 50px;
+        }
+        .list img:nth-child(2){
+            left: 460px;
+            top: 90px;
+        }
+        .list img:nth-child(3){
+            left: 135px;
+            top: 130px;
+        }
+        .list img:nth-child(4){
+            left: 432px;
+            top: 186px;
+        }
+        .list img:nth-child(5){
+            left: 765px;
+            top: 135px;
+        }
+
+
+
+        .person{
+            width: 100%;
+            height: 500px;
+            border: 1px solid darkcyan;
+            position: relative;
+        }
+        .person img{
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            transition: all 0.3s;
+        }
+        .person img.act{
+            opacity: 1;
+        }
+        .person img:nth-child(1){
+            left: 50px;
+            top: 100px;
+        }
+        .person img:nth-child(2){
+            left: 200px;
+            top: 300px;
+        }
+        .person img:nth-child(3){
+            left: 400px;
+            top: 100px;
+        }
+        .person img:nth-child(4){
+            left: 600px;
+            top: 300px;
+        }
+        .person img:nth-child(5){
+            left: 800px;
+            top: 100px;
+        }
+        .car{
+            display: flex;
+        }
+        .car img{
+            width: 50%;
+            opacity: 0;
+            transition: all 0.3s;
+        }
+        .car img.on{
+            opacity: 1;
+        }
+    </style>
+    <script src="script/jquery-3.7.1.js"></script>
+    <script src="script/jquery-ui.js"></script>
+    <script lang="java">
+        $(function(){
+            $(".list img").each(function(i){
+                setTimeout(function(){
+                    $(".list img").eq(i).addClass("ani")
+                }, i*1500);
+                // setInterval(function(){
+                //     $(".list img").eq(i).toggleClass("ani")
+                // }, i*1500);
+            })//list img").each
+
+
+            $(".person img").each(function(index){
+                setTimeout(function(){
+                    $(".person img").eq(index).addClass("act")
+                } , index*2000)//setTimeout
+
+
+            })//person li").each
+
+            // $(".car img").each(function(ind){
+            //     setInterval(function(){
+            //         $(".car img").eq(ind).addClass("on")
+            //     }, ind*1500)
+            // })//car img").each
+
+        })//jquery
+
+        $(window).scroll(function(){
+           var top = $(this).scrollTop();
+            console.log("top:", top)
+            if(top > 100){
+
+            }else{
+
+            }//if
+        }) //window).scroll
+    </script>
+</head>
+<body>
+    <div class="list">
+        <img src="img/p1.png" alt="p1">
+        <img src="img/p2.png" alt="p2">
+        <img src="img/p3.png" alt="p3">
+        <img src="img/p4.png" alt="p4">
+        <img src="img/p5.png" alt="p5">
+    </div><!-- list -->
+
+    <div class="person">
+        <img src="img/normal_01.png" alt="normal_01">
+        <img src="img/normal_02.png" alt="normal_01">
+        <img src="img/normal_03.png" alt="normal_01">
+        <img src="img/normal_04.png" alt="normal_01">
+        <img src="img/normal_05.png" alt="normal_01">
+    </div><!-- person -->
+
+    <div class="car">
+        <img src="img/006.jpg" alt="006">
+        <img src="img/007.jpg" alt="007">
+    </div><!-- car -->
+</body>
+</html>

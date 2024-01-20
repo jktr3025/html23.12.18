@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="script/jquery-3.7.1.js"></script>
+    <script lang="java">
+        $(function(){
+        //    var txt = $(".first").text();
+        //    console.log(txt)
+    //     $(".first").text("11111111");
+    //    var att = $(".first").attr("data");
+    //    $(".first").attr("data","11")
+    //    var att = $(".first").attr("data");
+    //    console.log(att)
+        
+    $(".list li").each(function(index){
+        console.log("index : ", index);
+        console.log("this : ", this);
+        console.log("this text : ", $(this).text());
+        console.log("this attr : ",$(this).attr("data"));
+
+        $(this).text($(this).attr("data"));
+    })//each
+
+    // 형제들이 동일한 명령어를 줘야할 때 each 함수로 한 번에 줄 수 있음 
+    //(index)는 인덱스를 기준으로 처리하겠다는 의미
+
+
+
+        })//jquery  
+    </script>
+</head>
+<body>
+    <div class="box">
+        <h1>each event</h1>
+        <ul class="list">
+            <li class="first" data="1">one</li>
+            <li data="2">two</li>
+            <li data="3">three</li>
+        </ul>
+    </div>
+</body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        *{
+            margin: 0;padding: 0;
+            box-sizing: border-box;
+        }
+        ul, li{
+            list-style: none;
+        }
+        a{
+            text-decoration: none;
+            color: inherit;
+        }
+        body{
+            background-color: #f1f1f1;
+        }
+        .container{}
+
+        .nav , .fix_nav{
+            text-align: center;
+            background-color: pink;
+            position: absolute;
+            width: 100%;
+            left: 0;
+            top: 0;
+        }
+        .nav li , .fix_nav li {
+            display: inline-block;
+        }
+        .nav li a , .fix_nav li a{
+            display: block;
+            height: 50px;
+            line-height: 50px;
+            padding: 0 50px;
+            font-weight: bold;
+        }
+        .fix_nav{
+            position: fixed;
+            background-color: purple;
+            top: -50px;
+            transition: all 0.3s;
+        }
+        .fix_nav.on{
+            top: 0;
+        }
+        .nav li a.act , .fix_nav li a.act{
+            color: white;
+        }
+        .nav li a:hover , .fix_nav li a:hover{
+            color: white;
+        }
+
+
+
+        .contents{}
+        .contents ul{}
+        .contents ul li{
+            height: 700px;
+            font-size: 200px;
+            font-weight: bold;
+            border: 1px solid white;
+            padding: 80px 40px;
+            position: relative;
+        }
+
+        .off{
+            width: 200px;
+            height: 200px;
+            background: red;
+            font-size: 20px;
+            color: white;   
+            position: absolute;
+            left: 50px;
+            top: 200px;
+            
+        }
+    </style>
+
+    <script src="script/jquery-3.7.1.js"></script>
+    <script lang="java">
+        $(function(){
+
+            $("contents li").each(function(i){
+                var off_top = $(this).offset().top;
+                console.log("off_top :" ,off_top)
+            })//contents li").each
+
+            $(".nav a , .fix_nav a").click(function(){
+                var num = $(this).parent("li").index();
+                console.log("num:", num)
+                var po = num * 700;
+                $("html , body").stop().animate({"scrollTop" : po},1000)
+
+
+                $(".nav a , .fix_nav a").removeClass("act");
+            $(".nav li").eq(num).children("a").addClass("act");
+            $(".fix_nav li").eq(num).find("a").addClass("act");
+
+
+            })//.nav a , .fix_nav a").click
+
+
+
+            var of = $(".off").offset();   
+            console.log("off:",of)       //바디로부터 위치
+
+            var pos = $(".off").position();
+            console.log("pos:", pos)       //포지션으로 준 값
+
+        }) //jquery
+
+
+
+        $(window).scroll(function(){
+            var top = $(this).scrollTop();
+            console.log("top:" ,top);
+            if(top > 100){
+                $(".fix_nav").addClass("on");
+            }else{
+                $(".fix_nav").removeClass("on");
+            } //if
+        }) //window scroll
+    </script>
+</head>
+<body>
+    <div class="container">
+        <nav class="nav">
+            <ul>
+                <li><a href="#areal1" class="act">Areal1</a></li>
+                <li><a href="#areal2">Areal2</a></li>
+                <li><a href="#areal3">Areal3</a></li>
+                <li><a href="#areal4">Areal4</a></li>
+                <li><a href="#areal5">Areal5</a></li>
+            </ul>
+        </nav>
+        <nav class="fix_nav">
+            <ul>
+                <li><a href="#areal1">Areal1</a></li>
+                <li><a href="#areal2">Areal2</a></li>
+                <li><a href="#areal3">Areal3</a></li>
+                <li><a href="#areal4">Areal4</a></li>
+                <li><a href="#areal5">Areal5</a></li>
+            </ul>
+        </nav>
+
+        <div class="contents">
+            <ul>
+                <li id="areal1">contents1
+                    
+                </li>
+                <li id="areal2">contents2</li>
+                <li id="areal3">contents3
+                    <div class="off">offset</div>
+                </li>
+                
+                <li id="areal4">contents4</li>
+                <li id="areal5">contents5</li>
+            </ul>
+        </div>
+    </div><!-- container -->
+</body>
+</html>
